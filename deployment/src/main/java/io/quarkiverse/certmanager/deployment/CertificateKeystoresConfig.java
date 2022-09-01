@@ -1,20 +1,19 @@
 package io.quarkiverse.certmanager.deployment;
 
-import io.quarkus.runtime.annotations.ConfigGroup;
+import java.util.Optional;
 
-@ConfigGroup
-public class CertificateKeystoresConfig {
+public interface CertificateKeystoresConfig {
     /**
      * JKS configures options for storing a JKS keystore in the spec.secretName Secret resource.
      * If set, a file named keystore.jks will be created in the target Secret resource, encrypted using the password stored in
      * passwordSecretRef.
      */
-    CertificateKeystoreConfig jks;
+    Optional<CertificateKeystoreConfig> jks();
 
     /**
      * PKCS12 configures options for storing a PKCS12 keystore in the spec.secretName Secret resource.
      * If set, a file named keystore.p12 will be created in the target Secret resource, encrypted using the password stored in
      * passwordSecretRef.
      */
-    CertificateKeystoreConfig pkcs12;
+    Optional<CertificateKeystoreConfig> pkcs12();
 }

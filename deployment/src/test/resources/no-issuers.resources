@@ -1,0 +1,2 @@
+quarkus.certificate.name=aa
+quarkus.certificate.secret-name=secret

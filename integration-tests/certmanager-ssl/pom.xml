@@ -47,6 +47,11 @@
       <artifactId>dekorate-core</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>io.fabric8</groupId>
+      <artifactId>certmanager-model-v1</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>

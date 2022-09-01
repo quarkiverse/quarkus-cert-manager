@@ -1,0 +1,226 @@
+
+:summaryTableId: quarkus-certificate
+[.configuration-legend]
+icon:lock[title=Fixed at build time] Configuration property fixed at build time - All other configuration properties are overridable at runtime
+[.configuration-reference.searchable, cols="80,.^10,.^10"]
+|===
+
+h|[[quarkus-certificate_configuration]]link:#quarkus-certificate_configuration[Configuration property]
+
+h|Type
+h|Default
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.name]]`link:#quarkus-certificate_quarkus.certificate.name[quarkus.certificate.name]`
+
+[.description]
+--
+The name of the certificate resource to be generated. If not provided, it will use the default name for the application resources.
+
+Environment variable: `+++QUARKUS_CERTIFICATE_NAME+++`
+--|string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.secret-name]]`link:#quarkus-certificate_quarkus.certificate.secret-name[quarkus.certificate.secret-name]`
+
+[.description]
+--
+SecretName is the name of the secret resource that will be automatically created and managed by this Certificate resource. It will be populated with a private key and certificate, signed by the denoted issuer.
+
+Environment variable: `+++QUARKUS_CERTIFICATE_SECRET_NAME+++`
+--|string 
+|required icon:exclamation-circle[title=Configuration property is required]
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.issuer-ref]]`link:#quarkus-certificate_quarkus.certificate.issuer-ref[quarkus.certificate.issuer-ref]`
+
+[.description]
+--
+The reference to the issuer for this certificate.
+
+Environment variable: `+++QUARKUS_CERTIFICATE_ISSUER_REF+++`
+--|IssuerRefConfig 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.ca]]`link:#quarkus-certificate_quarkus.certificate.ca[quarkus.certificate.ca]`
+
+[.description]
+--
+The CA issuer configuration.
+
+Environment variable: `+++QUARKUS_CERTIFICATE_CA+++`
+--|CAConfig 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.vault]]`link:#quarkus-certificate_quarkus.certificate.vault[quarkus.certificate.vault]`
+
+[.description]
+--
+The Vault issuer configuration.
+
+Environment variable: `+++QUARKUS_CERTIFICATE_VAULT+++`
+--|VaultConfig 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.self-signed]]`link:#quarkus-certificate_quarkus.certificate.self-signed[quarkus.certificate.self-signed]`
+
+[.description]
+--
+The self-signed issuer configuration.
+
+Environment variable: `+++QUARKUS_CERTIFICATE_SELF_SIGNED+++`
+--|SelfSignedConfig 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.subject]]`link:#quarkus-certificate_quarkus.certificate.subject[quarkus.certificate.subject]`
+
+[.description]
+--
+Full X509 name specification (https://golang.org/pkg/crypto/x509/pkix/++#++Name).
+
+Environment variable: `+++QUARKUS_CERTIFICATE_SUBJECT+++`
+--|SubjectConfig 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.common-name]]`link:#quarkus-certificate_quarkus.certificate.common-name[quarkus.certificate.common-name]`
+
+[.description]
+--
+CommonName is a common name to be used on the Certificate. The CommonName should have a length of 64 characters or fewer to avoid generating invalid CSRs.
+
+Environment variable: `+++QUARKUS_CERTIFICATE_COMMON_NAME+++`
+--|string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.duration]]`link:#quarkus-certificate_quarkus.certificate.duration[quarkus.certificate.duration]`
+
+[.description]
+--
+The lifetime of the Certificate.
+
+Environment variable: `+++QUARKUS_CERTIFICATE_DURATION+++`
+--|string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.renew-before]]`link:#quarkus-certificate_quarkus.certificate.renew-before[quarkus.certificate.renew-before]`
+
+[.description]
+--
+How long before the currently issued certificate’s expiry cert-manager should renew the certificate. The default is 2⁄3 of the issued certificate’s duration.
+
+Environment variable: `+++QUARKUS_CERTIFICATE_RENEW_BEFORE+++`
+--|string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.dns-names]]`link:#quarkus-certificate_quarkus.certificate.dns-names[quarkus.certificate.dns-names]`
+
+[.description]
+--
+The list of link:https://en.wikipedia.org/wiki/Subject_Alternative_Name[Subject Alternative Names].
+
+Environment variable: `+++QUARKUS_CERTIFICATE_DNS_NAMES+++`
+--|list of string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.ip-addresses]]`link:#quarkus-certificate_quarkus.certificate.ip-addresses[quarkus.certificate.ip-addresses]`
+
+[.description]
+--
+The list of IP address subjectAltNames to be set on the Certificate.
+
+Environment variable: `+++QUARKUS_CERTIFICATE_IP_ADDRESSES+++`
+--|list of string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.uris]]`link:#quarkus-certificate_quarkus.certificate.uris[quarkus.certificate.uris]`
+
+[.description]
+--
+The list of URI subjectAltNames to be set on the Certificate.
+
+Environment variable: `+++QUARKUS_CERTIFICATE_URIS+++`
+--|list of string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.email-addresses]]`link:#quarkus-certificate_quarkus.certificate.email-addresses[quarkus.certificate.email-addresses]`
+
+[.description]
+--
+The list of email subjectAltNames to be set on the Certificate.
+
+Environment variable: `+++QUARKUS_CERTIFICATE_EMAIL_ADDRESSES+++`
+--|list of string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.keystores]]`link:#quarkus-certificate_quarkus.certificate.keystores[quarkus.certificate.keystores]`
+
+[.description]
+--
+The Keystores generation configuration.
+
+Environment variable: `+++QUARKUS_CERTIFICATE_KEYSTORES+++`
+--|CertificateKeystoresConfig 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.is-ca]]`link:#quarkus-certificate_quarkus.certificate.is-ca[quarkus.certificate.is-ca]`
+
+[.description]
+--
+If true, it will mark this Certificate as valid for certificate signing.
+
+Environment variable: `+++QUARKUS_CERTIFICATE_IS_CA+++`
+--|boolean 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.usages]]`link:#quarkus-certificate_quarkus.certificate.usages[quarkus.certificate.usages]`
+
+[.description]
+--
+The set of x509 usages that are requested for the certificate.
+
+Environment variable: `+++QUARKUS_CERTIFICATE_USAGES+++`
+--|list of string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.private-key]]`link:#quarkus-certificate_quarkus.certificate.private-key[quarkus.certificate.private-key]`
+
+[.description]
+--
+Environment variable: `+++QUARKUS_CERTIFICATE_PRIVATE_KEY+++`
+--|CertificatePrivateKeyConfig 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.encode-usages-in-request]]`link:#quarkus-certificate_quarkus.certificate.encode-usages-in-request[quarkus.certificate.encode-usages-in-request]`
+
+[.description]
+--
+Environment variable: `+++QUARKUS_CERTIFICATE_ENCODE_USAGES_IN_REQUEST+++`
+--|boolean 
+|`false`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.volume-mount-path]]`link:#quarkus-certificate_quarkus.certificate.volume-mount-path[quarkus.certificate.volume-mount-path]`
+
+[.description]
+--
+Environment variable: `+++QUARKUS_CERTIFICATE_VOLUME_MOUNT_PATH+++`
+--|string 
+|`/etc/certs`
+
+|===

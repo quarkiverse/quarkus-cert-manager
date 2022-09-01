@@ -1,0 +1,3 @@
+quarkus.certificate.name=aa
+quarkus.certificate.secret-name=secret
+quarkus.certificate.self-signed.enabled=true

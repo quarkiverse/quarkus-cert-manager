@@ -1,16 +1,18 @@
 package io.quarkiverse.certmanager.deployment;
 
 import java.util.List;
+import java.util.Optional;
 
-import io.quarkus.runtime.annotations.ConfigGroup;
-import io.quarkus.runtime.annotations.ConfigItem;
+public interface SelfSignedConfig {
 
-@ConfigGroup
-public class SelfSignedConfig {
+    /**
+     * If the self-signed issuer should be generated.
+     */
+    boolean enabled();
+
     /**
      * The CRL distribution points is an X.509 v3 certificate extension which identifies the location of the CRL from which the
      * revocation of this certificate can be checked.
      */
-    @ConfigItem
-    List<String> crlDistributionPoints;
+    Optional<List<String>> crlDistributionPoints();
 }

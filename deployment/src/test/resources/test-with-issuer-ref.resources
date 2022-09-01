@@ -1,0 +1,3 @@
+quarkus.certificate.name=aa
+quarkus.certificate.secret-name=secret
+quarkus.certificate.issuer-ref.name=existing-issuer

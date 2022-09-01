@@ -1,25 +1,20 @@
 package io.quarkiverse.certmanager.deployment;
 
-import io.quarkus.runtime.annotations.ConfigGroup;
-import io.quarkus.runtime.annotations.ConfigItem;
+import java.util.Optional;
 
-@ConfigGroup
-public class IssuerRefConfig {
+public interface IssuerRefConfig {
     /**
      * The name of the resource being referred to.
      */
-    @ConfigItem
-    String name;
+    String name();
 
     /**
      * The kind of the resource being referred to.
      */
-    @ConfigItem
-    String kind;
+    Optional<String> kind();
 
     /**
      * The group of the resource being referred to.
      */
-    @ConfigItem
-    String group;
+    Optional<String> group();
 }
