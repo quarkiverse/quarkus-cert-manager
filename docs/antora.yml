@@ -1,0 +1,5 @@
+name: quarkus-certmanager
+title: Quarkus Cert-Manager
+version: dev
+nav:
+  - modules/ROOT/nav.adoc

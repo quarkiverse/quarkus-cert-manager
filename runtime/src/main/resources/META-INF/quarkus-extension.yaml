@@ -1,0 +1,11 @@
+---
+name: Quarkus - Cert-Manager
+description: Quarkus extension for Cert-Manager
+metadata:
+  keywords:
+  - certmanager
+  - kubernetes
+  - openshift
+  categories:
+  - "cloud"
+  status: "preview"

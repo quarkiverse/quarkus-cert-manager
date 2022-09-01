@@ -1,0 +1,6 @@
+= Using Quarkus Cert-Manager
+
+include::./includes/attributes.adoc[]
+
+:config-file: application.properties
+:extension-status: preview
