@@ -11,7 +11,7 @@ Under the hood, this extension uses https://dekorate.io/[Dekorate] to generate a
 
 == Create a Quarkus application with the Cert-Manager extension
 
-In this example, we'll create a Quarkus application with the Quarkus Helm and the Quarkus Kubernetes extensions by running the following command:
+In this example, we'll create a Quarkus application with the Quarkus Cert-Manager and the Quarkus Kubernetes extensions by running the following command:
 
 [source,bash,subs=attributes+]
 ----
@@ -38,7 +38,7 @@ This command will add the following dependency to your `pom.xml` file:
 <dependency>
     <groupId>io.quarkiverse.certmanager</groupId>
     <artifactId>quarkus-certmanager</artifactId>
-    <version>{quarkus-helm-version}</version>
+    <version>{quarkus-certmanager-version}</version>
 </dependency>
 ----
 
