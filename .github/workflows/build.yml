@@ -58,13 +58,16 @@ jobs:
         with:
           version: v0.11.1
           registry: true
-
+      - name: Install Cert-Manager
+        run: |
+          kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.9.1/cert-manager.yaml
       - name: Verify Test
         run: |
           K8S_NAMESPACE=test
           KIND_REGISTRY_GROUP=local
           VERSION=latest
           kubectl create namespace $K8S_NAMESPACE
+          kubectl config set-context --current --namespace=$K8S_NAMESPACE
           cd integration-tests/certmanager-ssl
           mvn clean package -Dquarkus.container-image.build=true \
             -Dquarkus.container-image.push=true \
@@ -72,8 +75,9 @@ jobs:
             -Dquarkus.container-image.group=$KIND_REGISTRY_GROUP \
             -Dquarkus.container-image.tag=$VERSION \
             -Dquarkus.container-image.insecure=true
-          // TODO
-          kubectl wait --for=condition=ready pod -l app.kubernetes.io/name=quarkus-certmanager-integration-tests-certmanager-ssl -n $K8S_NAMESPACE
+          kubectl apply -f target/kubernetes/kubernetes.yml
+          kubectl wait --for=condition=ready pod -l app.kubernetes.io/name=quarkus-certmanager-integration-tests-certmanager-ssl
+          mvn clean install -Drun-endpoint-test-in-kubernetes=true
 
       - name: Delete Project
         run: kubectl delete namespace test

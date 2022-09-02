@@ -32,8 +32,15 @@
       <classifier>noapt</classifier>
     </dependency>
     <dependency>
+      <groupId>io.dekorate</groupId>
+      <artifactId>kubernetes-annotations</artifactId>
+      <classifier>noapt</classifier>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-junit5-internal</artifactId>
+      <scope>test</scope>
     </dependency>
   </dependencies>
   <build>
