@@ -112,6 +112,62 @@ spec:
             secretName: tls-secret
 ----
 
+Furthermore, by default it will autoconfigure the Ingress resource if the property `quarkus.kubernetes.ingress.expose` is true:
+
+[source,yaml]
+----
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  ...
+spec:
+  rules:
+    ...
+  tls:
+    - hosts:
+        - kubernetes-example.com
+        - localhost
+      secretName: tls-secret
+----
+
+And it will also autoconfigure the HTTP SSL configuration part of the Deployment resource:
+
+[source,yaml]
+----
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  ...
+  name: quarkus-certmanager-integration-tests-certmanager-ssl
+spec:
+  replicas: 1
+  selector:
+    ...
+  template:
+    ...
+    spec:
+      containers:
+        - env:
+            - name: KUBERNETES_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: QUARKUS_HTTP_SSL_CERTIFICATE_KEY_STORE_FILE_TYPE
+              value: PKCS12
+            - name: QUARKUS_HTTP_SSL_CERTIFICATE_KEY_STORE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: pkcs12-pass
+            - name: QUARKUS_HTTP_SSL_CERTIFICATE_KEY_STORE_FILE
+              value: /etc/certs/keystore.p12
+----
+
+[IMPORTANT]
+====
+The autoconfiguration of the Ingress TLS and HTTP SSL configurations can be disabled using the property `quarkus.certificate.http-ssl-auto-configuration=false`.
+====
+
 == Securing Resources
 
 When securing your resources, it's important to validate that the requests are coming from known host names. For this purpose, we can use the `dnsNames` property which is part of the certificate configuration. For example, by adding the following `quarkus.certificate.dns-names` property (it's a comma separated list of strings):
