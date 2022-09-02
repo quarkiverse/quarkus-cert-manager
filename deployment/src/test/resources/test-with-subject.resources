@@ -3,3 +3,4 @@ quarkus.certificate.secret-name=secret
 quarkus.certificate.ca.secret-name=ca-secret
 quarkus.certificate.dns-names=kubernetes-example.com,localhost
 quarkus.certificate.subject.organizations=Quarkus,Community
+quarkus.certificate.http-ssl-auto-configuration=false
