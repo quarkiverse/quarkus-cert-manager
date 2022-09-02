@@ -1,5 +1,5 @@
 quarkus.certificate.name=aa
 quarkus.certificate.secret-name=secret
-
 quarkus.certificate.self-signed.enabled=true
 quarkus.certificate.vault.server=a@b.com
+quarkus.certificate.http-ssl-auto-configuration=false
