@@ -20,7 +20,7 @@ public class EndpointIT {
     public void shouldHttpsWork() throws IOException {
         KubernetesClient kubernetesClient = new DefaultKubernetesClient();
         try (LocalPortForward port = kubernetesClient.services()
-                .withName("quarkus-certmanager-integration-tests-certmanager-ssl")
+                .withName("quarkus-hello-world")
                 .portForward(8443)) {
             assertTrue(port.isAlive());
             String response = given().relaxedHTTPSValidation().when()

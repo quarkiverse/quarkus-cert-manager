@@ -224,12 +224,13 @@ Environment variable: `+++QUARKUS_CERTIFICATE_VOLUME_MOUNT_PATH+++`
 |`/etc/certs`
 
 
-a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.http-ssl-auto-configuration]]`link:#quarkus-certificate_quarkus.certificate.http-ssl-auto-configuration[quarkus.certificate.http-ssl-auto-configuration]`
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.autoconfigure]]`link:#quarkus-certificate_quarkus.certificate.autoconfigure[quarkus.certificate.autoconfigure]`
 
 [.description]
 --
-Environment variable: `+++QUARKUS_CERTIFICATE_HTTP_SSL_AUTO_CONFIGURATION+++`
---|boolean 
-|`true`
+Environment variable: `+++QUARKUS_CERTIFICATE_AUTOCONFIGURE+++`
+-- a|
+`none`, `automatic`, `all`, `https-only`, `cluster-only` 
+|`automatic`
 
 |===

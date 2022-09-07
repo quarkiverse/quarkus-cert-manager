@@ -123,6 +123,6 @@ public interface CertificateConfig {
      * @return whether to populate the HTTP SSL configuration as described in
      *         <a href="https://quarkus.io/guides/http-reference#providing-a-keystore">here</a>.
      */
-    @WithDefault("true")
-    boolean httpSslAutoConfiguration();
+    @WithDefault("AUTOMATIC")
+    AutoConfigureMode autoconfigure();
 }

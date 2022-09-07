@@ -7,8 +7,8 @@
     <version>0.0.2-SNAPSHOT</version>
   </parent>
 
-  <artifactId>quarkus-certmanager-integration-tests-certmanager-ssl</artifactId>
-  <name>Quarkus - Cert-Manager - Integration Tests - SSL</name>
+  <artifactId>quarkus-certmanager-integration-tests-openshift-certmanager-ssl</artifactId>
+  <name>Quarkus - Cert-Manager - Integration Tests - OpenShift SSL</name>
 
   <dependencies>
     <dependency>
@@ -18,12 +18,7 @@
 
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-kubernetes</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-container-image-docker</artifactId>
+      <artifactId>quarkus-openshift</artifactId>
     </dependency>
 
     <dependency>
@@ -50,6 +45,11 @@
     <dependency>
       <groupId>io.fabric8</groupId>
       <artifactId>certmanager-model-v1</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.fabric8</groupId>
+      <artifactId>openshift-model</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>

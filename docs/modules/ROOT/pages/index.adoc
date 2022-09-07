@@ -87,7 +87,7 @@ spec:
   secretName: tls-secret
 ----
 
-Apart from these two resources, the Quarkus Cert-Manager extension will also configure, part of the Deployment, a volume mounted from the secret that contains the Cert-Manager generated files to allow the application to access them and to configure the HTTPS/TLS endpoint:
+The Quarkus Cert-Manager extension will add, part of the Deployment, a volume mounted from the secret that contains the Cert-Manager generated files to allow the application to access them and to configure the HTTPS/TLS endpoint:
 
 [source,yaml]
 ----
@@ -112,7 +112,15 @@ spec:
             secretName: tls-secret
 ----
 
-Furthermore, by default it will autoconfigure the Ingress resource if the property `quarkus.kubernetes.ingress.expose` is true:
+Moreover, the Quarkus Cert-Manager extension will also autoconfigure the application to accept SSL connections. By default, it will autoconfigure only the Ingress/Route resource if exposed, otherwise, it will enable the HTTPS/TLS configuration for the internal communications of the application. This configuration can be controlled using the property `quarkus.certificate.autoconfigure` which values:
+
+* (Default) AUTOMATIC: It will secure Ingress/Route resources if exposed, otherwise the HTTP endpoints.
+* NONE: It won't autoconfigure anything.
+* ALL: It will secure the HTTP endpoints and also the Ingress/Route resources if exposed.
+* HTTPS_ONLY: It will secure only the HTTP endpoints.
+* CLUSTER_ONLY: It will secure only the Ingress/Route resources. It will throw an exception if it was not exposed.
+
+For example, if you want to secure both the internal HTTPs connections and the ingress resource by setting the property `quarkus.certificate.autoconfigure=ALL`, it will update the Ingress resource as follows if the property `quarkus.kubernetes.ingress.expose` is true:
 
 [source,yaml]
 ----
@@ -163,11 +171,6 @@ spec:
               value: /etc/certs/keystore.p12
 ----
 
-[IMPORTANT]
-====
-The autoconfiguration of the Ingress TLS and HTTP SSL configurations can be disabled using the property `quarkus.certificate.http-ssl-auto-configuration=false`.
-====
-
 == Securing Resources
 
 When securing your resources, it's important to validate that the requests are coming from known host names. For this purpose, we can use the `dnsNames` property which is part of the certificate configuration. For example, by adding the following `quarkus.certificate.dns-names` property (it's a comma separated list of strings):
@@ -203,14 +206,6 @@ spec:
     - hosts:
         - foo.bar.com
       secretName: tls-secret # < cert-manager will store the created certificate in this secret.
-----
-
-In Quarkus, you can generate the above Ingress resource by simply adding the following key properties:
-[source,properties]
-----
-quarkus.kubernetes.ingress.host=foo.bar.com
-quarkus.kubernetes.ingress.expose=true
-quarkus.kubernetes.ingress.tls-secret-name=tls-secret
 ----
 
 == Issuers

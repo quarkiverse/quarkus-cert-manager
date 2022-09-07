@@ -3,4 +3,4 @@ quarkus.certificate.secret-name=secret
 quarkus.certificate.vault.server=server:8888
 quarkus.certificate.vault.path=/my-path
 quarkus.certificate.vault.ca-bundle=asdas
-quarkus.certificate.http-ssl-auto-configuration=false
+quarkus.certificate.autoconfigure=NONE

@@ -68,7 +68,7 @@ jobs:
           VERSION=latest
           kubectl create namespace $K8S_NAMESPACE
           kubectl config set-context --current --namespace=$K8S_NAMESPACE
-          cd integration-tests/certmanager-ssl
+          cd integration-tests/kubernetes-certmanager-ssl
           mvn clean package -Dquarkus.container-image.build=true \
             -Dquarkus.container-image.push=true \
             -Dquarkus.container-image.registry=$KIND_REGISTRY \
@@ -76,7 +76,7 @@ jobs:
             -Dquarkus.container-image.tag=$VERSION \
             -Dquarkus.container-image.insecure=true
           kubectl apply -f target/kubernetes/kubernetes.yml
-          kubectl wait --for=condition=ready pod -l app.kubernetes.io/name=quarkus-certmanager-integration-tests-certmanager-ssl
+          kubectl wait --for=condition=ready pod -l app.kubernetes.io/name=quarkus-hello-world
           mvn clean install -Drun-endpoint-test-in-kubernetes=true
 
       - name: Delete Project

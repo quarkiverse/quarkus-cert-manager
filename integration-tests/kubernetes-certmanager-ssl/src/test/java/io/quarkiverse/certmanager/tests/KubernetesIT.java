@@ -26,7 +26,7 @@ import io.fabric8.kubernetes.api.model.networking.v1.IngressTLS;
 
 public class KubernetesIT {
 
-    private static final String NAME = "quarkus-certmanager-integration-tests-certmanager-ssl";
+    private static final String NAME = "quarkus-hello-world";
 
     @Test
     public void shouldCertificateAndIssuerBeGenerated() throws IOException {
