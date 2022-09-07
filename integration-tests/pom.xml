@@ -12,6 +12,7 @@
   <name>Quarkus - Cert-Manager - Integration Tests</name>
 
   <modules>
-    <module>certmanager-ssl</module>
+    <module>kubernetes-certmanager-ssl</module>
+    <module>openshift-certmanager-ssl</module>
   </modules>
 </project>

@@ -1,4 +1,4 @@
 quarkus.certificate.name=aa
 quarkus.certificate.secret-name=secret
 quarkus.certificate.ca.secret-name=ca-secret
-quarkus.certificate.http-ssl-auto-configuration=false
+quarkus.certificate.autoconfigure=NONE
