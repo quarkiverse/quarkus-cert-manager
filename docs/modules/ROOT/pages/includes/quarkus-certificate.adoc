@@ -16,7 +16,12 @@ a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate
 --
 The name of the certificate resource to be generated. If not provided, it will use the default name for the application resources.
 
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_NAME+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
 Environment variable: `+++QUARKUS_CERTIFICATE_NAME+++`
+endif::add-copy-button-to-env-var[]
 --|string 
 |
 
@@ -27,64 +32,14 @@ a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate
 --
 SecretName is the name of the secret resource that will be automatically created and managed by this Certificate resource. It will be populated with a private key and certificate, signed by the denoted issuer.
 
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_SECRET_NAME+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
 Environment variable: `+++QUARKUS_CERTIFICATE_SECRET_NAME+++`
+endif::add-copy-button-to-env-var[]
 --|string 
 |required icon:exclamation-circle[title=Configuration property is required]
-
-
-a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.issuer-ref]]`link:#quarkus-certificate_quarkus.certificate.issuer-ref[quarkus.certificate.issuer-ref]`
-
-[.description]
---
-The reference to the issuer for this certificate.
-
-Environment variable: `+++QUARKUS_CERTIFICATE_ISSUER_REF+++`
---|IssuerRefConfig 
-|
-
-
-a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.ca]]`link:#quarkus-certificate_quarkus.certificate.ca[quarkus.certificate.ca]`
-
-[.description]
---
-The CA issuer configuration.
-
-Environment variable: `+++QUARKUS_CERTIFICATE_CA+++`
---|CAConfig 
-|
-
-
-a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.vault]]`link:#quarkus-certificate_quarkus.certificate.vault[quarkus.certificate.vault]`
-
-[.description]
---
-The Vault issuer configuration.
-
-Environment variable: `+++QUARKUS_CERTIFICATE_VAULT+++`
---|VaultConfig 
-|
-
-
-a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.self-signed]]`link:#quarkus-certificate_quarkus.certificate.self-signed[quarkus.certificate.self-signed]`
-
-[.description]
---
-The self-signed issuer configuration.
-
-Environment variable: `+++QUARKUS_CERTIFICATE_SELF_SIGNED+++`
---|SelfSignedConfig 
-|
-
-
-a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.subject]]`link:#quarkus-certificate_quarkus.certificate.subject[quarkus.certificate.subject]`
-
-[.description]
---
-Full X509 name specification (https://golang.org/pkg/crypto/x509/pkix/++#++Name).
-
-Environment variable: `+++QUARKUS_CERTIFICATE_SUBJECT+++`
---|SubjectConfig 
-|
 
 
 a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.common-name]]`link:#quarkus-certificate_quarkus.certificate.common-name[quarkus.certificate.common-name]`
@@ -93,7 +48,12 @@ a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate
 --
 CommonName is a common name to be used on the Certificate. The CommonName should have a length of 64 characters or fewer to avoid generating invalid CSRs.
 
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_COMMON_NAME+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
 Environment variable: `+++QUARKUS_CERTIFICATE_COMMON_NAME+++`
+endif::add-copy-button-to-env-var[]
 --|string 
 |
 
@@ -104,7 +64,12 @@ a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate
 --
 The lifetime of the Certificate.
 
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_DURATION+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
 Environment variable: `+++QUARKUS_CERTIFICATE_DURATION+++`
+endif::add-copy-button-to-env-var[]
 --|string 
 |
 
@@ -115,7 +80,12 @@ a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate
 --
 How long before the currently issued certificate’s expiry cert-manager should renew the certificate. The default is 2⁄3 of the issued certificate’s duration.
 
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_RENEW_BEFORE+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
 Environment variable: `+++QUARKUS_CERTIFICATE_RENEW_BEFORE+++`
+endif::add-copy-button-to-env-var[]
 --|string 
 |
 
@@ -126,7 +96,12 @@ a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate
 --
 The list of link:https://en.wikipedia.org/wiki/Subject_Alternative_Name[Subject Alternative Names].
 
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_DNS_NAMES+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
 Environment variable: `+++QUARKUS_CERTIFICATE_DNS_NAMES+++`
+endif::add-copy-button-to-env-var[]
 --|list of string 
 |
 
@@ -137,7 +112,12 @@ a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate
 --
 The list of IP address subjectAltNames to be set on the Certificate.
 
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_IP_ADDRESSES+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
 Environment variable: `+++QUARKUS_CERTIFICATE_IP_ADDRESSES+++`
+endif::add-copy-button-to-env-var[]
 --|list of string 
 |
 
@@ -148,7 +128,12 @@ a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate
 --
 The list of URI subjectAltNames to be set on the Certificate.
 
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_URIS+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
 Environment variable: `+++QUARKUS_CERTIFICATE_URIS+++`
+endif::add-copy-button-to-env-var[]
 --|list of string 
 |
 
@@ -159,19 +144,13 @@ a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate
 --
 The list of email subjectAltNames to be set on the Certificate.
 
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_EMAIL_ADDRESSES+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
 Environment variable: `+++QUARKUS_CERTIFICATE_EMAIL_ADDRESSES+++`
+endif::add-copy-button-to-env-var[]
 --|list of string 
-|
-
-
-a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.keystores]]`link:#quarkus-certificate_quarkus.certificate.keystores[quarkus.certificate.keystores]`
-
-[.description]
---
-The Keystores generation configuration.
-
-Environment variable: `+++QUARKUS_CERTIFICATE_KEYSTORES+++`
---|CertificateKeystoresConfig 
 |
 
 
@@ -181,7 +160,12 @@ a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate
 --
 If true, it will mark this Certificate as valid for certificate signing.
 
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_IS_CA+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
 Environment variable: `+++QUARKUS_CERTIFICATE_IS_CA+++`
+endif::add-copy-button-to-env-var[]
 --|boolean 
 |
 
@@ -192,17 +176,13 @@ a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate
 --
 The set of x509 usages that are requested for the certificate.
 
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_USAGES+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
 Environment variable: `+++QUARKUS_CERTIFICATE_USAGES+++`
+endif::add-copy-button-to-env-var[]
 --|list of string 
-|
-
-
-a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.private-key]]`link:#quarkus-certificate_quarkus.certificate.private-key[quarkus.certificate.private-key]`
-
-[.description]
---
-Environment variable: `+++QUARKUS_CERTIFICATE_PRIVATE_KEY+++`
---|CertificatePrivateKeyConfig 
 |
 
 
@@ -210,7 +190,12 @@ a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate
 
 [.description]
 --
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_ENCODE_USAGES_IN_REQUEST+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
 Environment variable: `+++QUARKUS_CERTIFICATE_ENCODE_USAGES_IN_REQUEST+++`
+endif::add-copy-button-to-env-var[]
 --|boolean 
 |`false`
 
@@ -219,7 +204,12 @@ a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate
 
 [.description]
 --
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_VOLUME_MOUNT_PATH+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
 Environment variable: `+++QUARKUS_CERTIFICATE_VOLUME_MOUNT_PATH+++`
+endif::add-copy-button-to-env-var[]
 --|string 
 |`/etc/certs`
 
@@ -228,9 +218,608 @@ a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate
 
 [.description]
 --
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_AUTOCONFIGURE+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
 Environment variable: `+++QUARKUS_CERTIFICATE_AUTOCONFIGURE+++`
+endif::add-copy-button-to-env-var[]
 -- a|
 `none`, `automatic`, `all`, `https-only`, `cluster-only` 
 |`automatic`
+
+
+h|[[quarkus-certificate_quarkus.certificate.issuer-ref-the-reference-to-the-issuer-for-this-certificate]]link:#quarkus-certificate_quarkus.certificate.issuer-ref-the-reference-to-the-issuer-for-this-certificate[The reference to the issuer for this certificate]
+This configuration section is optional
+h|Type
+h|Default
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.issuer-ref.name]]`link:#quarkus-certificate_quarkus.certificate.issuer-ref.name[quarkus.certificate.issuer-ref.name]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_ISSUER_REF_NAME+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_ISSUER_REF_NAME+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|required icon:exclamation-circle[title=Configuration property is required]
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.issuer-ref.kind]]`link:#quarkus-certificate_quarkus.certificate.issuer-ref.kind[quarkus.certificate.issuer-ref.kind]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_ISSUER_REF_KIND+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_ISSUER_REF_KIND+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.issuer-ref.group]]`link:#quarkus-certificate_quarkus.certificate.issuer-ref.group[quarkus.certificate.issuer-ref.group]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_ISSUER_REF_GROUP+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_ISSUER_REF_GROUP+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|
+
+
+h|[[quarkus-certificate_quarkus.certificate.ca-the-ca-issuer-configuration]]link:#quarkus-certificate_quarkus.certificate.ca-the-ca-issuer-configuration[The CA issuer configuration]
+This configuration section is optional
+h|Type
+h|Default
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.ca.secret-name]]`link:#quarkus-certificate_quarkus.certificate.ca.secret-name[quarkus.certificate.ca.secret-name]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_CA_SECRET_NAME+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_CA_SECRET_NAME+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|required icon:exclamation-circle[title=Configuration property is required]
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.ca.crl-distribution-points]]`link:#quarkus-certificate_quarkus.certificate.ca.crl-distribution-points[quarkus.certificate.ca.crl-distribution-points]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_CA_CRL_DISTRIBUTION_POINTS+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_CA_CRL_DISTRIBUTION_POINTS+++`
+endif::add-copy-button-to-env-var[]
+--|list of string 
+|
+
+
+h|[[quarkus-certificate_quarkus.certificate.vault-the-vault-issuer-configuration]]link:#quarkus-certificate_quarkus.certificate.vault-the-vault-issuer-configuration[The Vault issuer configuration]
+This configuration section is optional
+h|Type
+h|Default
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.vault.server]]`link:#quarkus-certificate_quarkus.certificate.vault.server[quarkus.certificate.vault.server]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_VAULT_SERVER+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_VAULT_SERVER+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|required icon:exclamation-circle[title=Configuration property is required]
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.vault.path]]`link:#quarkus-certificate_quarkus.certificate.vault.path[quarkus.certificate.vault.path]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_VAULT_PATH+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_VAULT_PATH+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|required icon:exclamation-circle[title=Configuration property is required]
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.vault.namespace]]`link:#quarkus-certificate_quarkus.certificate.vault.namespace[quarkus.certificate.vault.namespace]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_VAULT_NAMESPACE+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_VAULT_NAMESPACE+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.vault.ca-bundle]]`link:#quarkus-certificate_quarkus.certificate.vault.ca-bundle[quarkus.certificate.vault.ca-bundle]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_VAULT_CA_BUNDLE+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_VAULT_CA_BUNDLE+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|required icon:exclamation-circle[title=Configuration property is required]
+
+
+h|[[quarkus-certificate_quarkus.certificate.vault.auth-token-secret-ref]]link:#quarkus-certificate_quarkus.certificate.vault.auth-token-secret-ref[]
+This configuration section is optional
+h|Type
+h|Default
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.vault.auth-token-secret-ref.name]]`link:#quarkus-certificate_quarkus.certificate.vault.auth-token-secret-ref.name[quarkus.certificate.vault.auth-token-secret-ref.name]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_VAULT_AUTH_TOKEN_SECRET_REF_NAME+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_VAULT_AUTH_TOKEN_SECRET_REF_NAME+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|required icon:exclamation-circle[title=Configuration property is required]
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.vault.auth-token-secret-ref.key]]`link:#quarkus-certificate_quarkus.certificate.vault.auth-token-secret-ref.key[quarkus.certificate.vault.auth-token-secret-ref.key]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_VAULT_AUTH_TOKEN_SECRET_REF_KEY+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_VAULT_AUTH_TOKEN_SECRET_REF_KEY+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|required icon:exclamation-circle[title=Configuration property is required]
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.vault.auth-app-role.path]]`link:#quarkus-certificate_quarkus.certificate.vault.auth-app-role.path[quarkus.certificate.vault.auth-app-role.path]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_VAULT_AUTH_APP_ROLE_PATH+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_VAULT_AUTH_APP_ROLE_PATH+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|required icon:exclamation-circle[title=Configuration property is required]
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.vault.auth-app-role.role-id]]`link:#quarkus-certificate_quarkus.certificate.vault.auth-app-role.role-id[quarkus.certificate.vault.auth-app-role.role-id]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_VAULT_AUTH_APP_ROLE_ROLE_ID+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_VAULT_AUTH_APP_ROLE_ROLE_ID+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|required icon:exclamation-circle[title=Configuration property is required]
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.vault.auth-kubernetes.mount-path]]`link:#quarkus-certificate_quarkus.certificate.vault.auth-kubernetes.mount-path[quarkus.certificate.vault.auth-kubernetes.mount-path]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_VAULT_AUTH_KUBERNETES_MOUNT_PATH+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_VAULT_AUTH_KUBERNETES_MOUNT_PATH+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|required icon:exclamation-circle[title=Configuration property is required]
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.vault.auth-kubernetes.role]]`link:#quarkus-certificate_quarkus.certificate.vault.auth-kubernetes.role[quarkus.certificate.vault.auth-kubernetes.role]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_VAULT_AUTH_KUBERNETES_ROLE+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_VAULT_AUTH_KUBERNETES_ROLE+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|required icon:exclamation-circle[title=Configuration property is required]
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.private-key.rotation-policy]]`link:#quarkus-certificate_quarkus.certificate.private-key.rotation-policy[quarkus.certificate.private-key.rotation-policy]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_PRIVATE_KEY_ROTATION_POLICY+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_PRIVATE_KEY_ROTATION_POLICY+++`
+endif::add-copy-button-to-env-var[]
+-- a|
+`unset`, `never`, `always` 
+|`unset`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.private-key.encoding]]`link:#quarkus-certificate_quarkus.certificate.private-key.encoding[quarkus.certificate.private-key.encoding]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_PRIVATE_KEY_ENCODING+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_PRIVATE_KEY_ENCODING+++`
+endif::add-copy-button-to-env-var[]
+-- a|
+`unset`, `pkcs1`, `pkcs8` 
+|`unset`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.private-key.algorithm]]`link:#quarkus-certificate_quarkus.certificate.private-key.algorithm[quarkus.certificate.private-key.algorithm]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_PRIVATE_KEY_ALGORITHM+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_PRIVATE_KEY_ALGORITHM+++`
+endif::add-copy-button-to-env-var[]
+-- a|
+`unset`, `rsa`, `ed25519`, `ecdsa` 
+|`unset`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.private-key.size]]`link:#quarkus-certificate_quarkus.certificate.private-key.size[quarkus.certificate.private-key.size]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_PRIVATE_KEY_SIZE+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_PRIVATE_KEY_SIZE+++`
+endif::add-copy-button-to-env-var[]
+--|int 
+|`-1`
+
+
+h|[[quarkus-certificate_quarkus.certificate.vault.auth-app-role.secret-ref]]link:#quarkus-certificate_quarkus.certificate.vault.auth-app-role.secret-ref[]
+This configuration section is optional
+h|Type
+h|Default
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.vault.auth-app-role.secret-ref.name]]`link:#quarkus-certificate_quarkus.certificate.vault.auth-app-role.secret-ref.name[quarkus.certificate.vault.auth-app-role.secret-ref.name]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_VAULT_AUTH_APP_ROLE_SECRET_REF_NAME+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_VAULT_AUTH_APP_ROLE_SECRET_REF_NAME+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|required icon:exclamation-circle[title=Configuration property is required]
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.vault.auth-app-role.secret-ref.key]]`link:#quarkus-certificate_quarkus.certificate.vault.auth-app-role.secret-ref.key[quarkus.certificate.vault.auth-app-role.secret-ref.key]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_VAULT_AUTH_APP_ROLE_SECRET_REF_KEY+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_VAULT_AUTH_APP_ROLE_SECRET_REF_KEY+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|required icon:exclamation-circle[title=Configuration property is required]
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.vault.auth-kubernetes.secret-ref.name]]`link:#quarkus-certificate_quarkus.certificate.vault.auth-kubernetes.secret-ref.name[quarkus.certificate.vault.auth-kubernetes.secret-ref.name]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_VAULT_AUTH_KUBERNETES_SECRET_REF_NAME+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_VAULT_AUTH_KUBERNETES_SECRET_REF_NAME+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|required icon:exclamation-circle[title=Configuration property is required]
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.vault.auth-kubernetes.secret-ref.key]]`link:#quarkus-certificate_quarkus.certificate.vault.auth-kubernetes.secret-ref.key[quarkus.certificate.vault.auth-kubernetes.secret-ref.key]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_VAULT_AUTH_KUBERNETES_SECRET_REF_KEY+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_VAULT_AUTH_KUBERNETES_SECRET_REF_KEY+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|required icon:exclamation-circle[title=Configuration property is required]
+
+
+h|[[quarkus-certificate_quarkus.certificate.self-signed-the-self-signed-issuer-configuration]]link:#quarkus-certificate_quarkus.certificate.self-signed-the-self-signed-issuer-configuration[The self-signed issuer configuration]
+This configuration section is optional
+h|Type
+h|Default
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.self-signed.enabled]]`link:#quarkus-certificate_quarkus.certificate.self-signed.enabled[quarkus.certificate.self-signed.enabled]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_SELF_SIGNED_ENABLED+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_SELF_SIGNED_ENABLED+++`
+endif::add-copy-button-to-env-var[]
+--|boolean 
+|`false`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.self-signed.crl-distribution-points]]`link:#quarkus-certificate_quarkus.certificate.self-signed.crl-distribution-points[quarkus.certificate.self-signed.crl-distribution-points]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_SELF_SIGNED_CRL_DISTRIBUTION_POINTS+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_SELF_SIGNED_CRL_DISTRIBUTION_POINTS+++`
+endif::add-copy-button-to-env-var[]
+--|list of string 
+|
+
+
+h|[[quarkus-certificate_quarkus.certificate.subject-full-x509-name-specification-https-golang]]link:#quarkus-certificate_quarkus.certificate.subject-full-x509-name-specification-https-golang[Full X509 name specification (https://golang]
+This configuration section is optional
+h|Type
+h|Default
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.subject.organizations]]`link:#quarkus-certificate_quarkus.certificate.subject.organizations[quarkus.certificate.subject.organizations]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_SUBJECT_ORGANIZATIONS+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_SUBJECT_ORGANIZATIONS+++`
+endif::add-copy-button-to-env-var[]
+--|list of string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.subject.countries]]`link:#quarkus-certificate_quarkus.certificate.subject.countries[quarkus.certificate.subject.countries]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_SUBJECT_COUNTRIES+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_SUBJECT_COUNTRIES+++`
+endif::add-copy-button-to-env-var[]
+--|list of string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.subject.organizational-units]]`link:#quarkus-certificate_quarkus.certificate.subject.organizational-units[quarkus.certificate.subject.organizational-units]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_SUBJECT_ORGANIZATIONAL_UNITS+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_SUBJECT_ORGANIZATIONAL_UNITS+++`
+endif::add-copy-button-to-env-var[]
+--|list of string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.subject.localities]]`link:#quarkus-certificate_quarkus.certificate.subject.localities[quarkus.certificate.subject.localities]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_SUBJECT_LOCALITIES+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_SUBJECT_LOCALITIES+++`
+endif::add-copy-button-to-env-var[]
+--|list of string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.subject.provinces]]`link:#quarkus-certificate_quarkus.certificate.subject.provinces[quarkus.certificate.subject.provinces]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_SUBJECT_PROVINCES+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_SUBJECT_PROVINCES+++`
+endif::add-copy-button-to-env-var[]
+--|list of string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.subject.street-addresses]]`link:#quarkus-certificate_quarkus.certificate.subject.street-addresses[quarkus.certificate.subject.street-addresses]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_SUBJECT_STREET_ADDRESSES+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_SUBJECT_STREET_ADDRESSES+++`
+endif::add-copy-button-to-env-var[]
+--|list of string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.subject.postal-codes]]`link:#quarkus-certificate_quarkus.certificate.subject.postal-codes[quarkus.certificate.subject.postal-codes]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_SUBJECT_POSTAL_CODES+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_SUBJECT_POSTAL_CODES+++`
+endif::add-copy-button-to-env-var[]
+--|list of string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.subject.serial-number]]`link:#quarkus-certificate_quarkus.certificate.subject.serial-number[quarkus.certificate.subject.serial-number]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_SUBJECT_SERIAL_NUMBER+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_SUBJECT_SERIAL_NUMBER+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|
+
+
+h|[[quarkus-certificate_quarkus.certificate.keystores-the-keystores-generation-configuration]]link:#quarkus-certificate_quarkus.certificate.keystores-the-keystores-generation-configuration[The Keystores generation configuration]
+This configuration section is optional
+h|Type
+h|Default
+
+h|[[quarkus-certificate_quarkus.certificate.keystores.jks]]link:#quarkus-certificate_quarkus.certificate.keystores.jks[]
+This configuration section is optional
+h|Type
+h|Default
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.keystores.jks.create]]`link:#quarkus-certificate_quarkus.certificate.keystores.jks.create[quarkus.certificate.keystores.jks.create]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_KEYSTORES_JKS_CREATE+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_KEYSTORES_JKS_CREATE+++`
+endif::add-copy-button-to-env-var[]
+--|boolean 
+|`false`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.keystores.jks.password-secret-ref.name]]`link:#quarkus-certificate_quarkus.certificate.keystores.jks.password-secret-ref.name[quarkus.certificate.keystores.jks.password-secret-ref.name]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_KEYSTORES_JKS_PASSWORD_SECRET_REF_NAME+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_KEYSTORES_JKS_PASSWORD_SECRET_REF_NAME+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|required icon:exclamation-circle[title=Configuration property is required]
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.keystores.jks.password-secret-ref.key]]`link:#quarkus-certificate_quarkus.certificate.keystores.jks.password-secret-ref.key[quarkus.certificate.keystores.jks.password-secret-ref.key]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_KEYSTORES_JKS_PASSWORD_SECRET_REF_KEY+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_KEYSTORES_JKS_PASSWORD_SECRET_REF_KEY+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|required icon:exclamation-circle[title=Configuration property is required]
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.keystores.pkcs12.create]]`link:#quarkus-certificate_quarkus.certificate.keystores.pkcs12.create[quarkus.certificate.keystores.pkcs12.create]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_KEYSTORES_PKCS12_CREATE+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_KEYSTORES_PKCS12_CREATE+++`
+endif::add-copy-button-to-env-var[]
+--|boolean 
+|`false`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.keystores.pkcs12.password-secret-ref.name]]`link:#quarkus-certificate_quarkus.certificate.keystores.pkcs12.password-secret-ref.name[quarkus.certificate.keystores.pkcs12.password-secret-ref.name]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_KEYSTORES_PKCS12_PASSWORD_SECRET_REF_NAME+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_KEYSTORES_PKCS12_PASSWORD_SECRET_REF_NAME+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|required icon:exclamation-circle[title=Configuration property is required]
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-certificate_quarkus.certificate.keystores.pkcs12.password-secret-ref.key]]`link:#quarkus-certificate_quarkus.certificate.keystores.pkcs12.password-secret-ref.key[quarkus.certificate.keystores.pkcs12.password-secret-ref.key]`
+
+[.description]
+--
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CERTIFICATE_KEYSTORES_PKCS12_PASSWORD_SECRET_REF_KEY+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CERTIFICATE_KEYSTORES_PKCS12_PASSWORD_SECRET_REF_KEY+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|required icon:exclamation-circle[title=Configuration property is required]
 
 |===

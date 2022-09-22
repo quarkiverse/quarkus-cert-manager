@@ -2,6 +2,9 @@ package io.quarkiverse.certmanager.deployment;
 
 import java.util.Optional;
 
+import io.quarkus.runtime.annotations.ConfigGroup;
+
+@ConfigGroup
 public interface VaultKubernetesAuthConfig {
     /**
      * The mount path to use when authenticating with Vault.
