@@ -3,8 +3,10 @@ package io.quarkiverse.certmanager.deployment;
 import io.dekorate.certmanager.annotation.PrivateKeyAlgorithm;
 import io.dekorate.certmanager.annotation.PrivateKeyEncoding;
 import io.dekorate.certmanager.annotation.RotationPolicy;
+import io.quarkus.runtime.annotations.ConfigGroup;
 import io.smallrye.config.WithDefault;
 
+@ConfigGroup
 public interface CertificatePrivateKeyConfig {
     /**
      * RotationPolicy controls how private keys should be regenerated when a re-issuance is being processed.

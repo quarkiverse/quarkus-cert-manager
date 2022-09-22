@@ -2,6 +2,9 @@ package io.quarkiverse.certmanager.deployment;
 
 import java.util.Optional;
 
+import io.quarkus.runtime.annotations.ConfigGroup;
+
+@ConfigGroup
 public interface VaultConfig {
     /**
      * The connection address for the Vault server, e.g: “https://vault.example.com:8200”.

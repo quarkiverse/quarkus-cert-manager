@@ -1,5 +1,8 @@
 package io.quarkiverse.certmanager.deployment;
 
+import io.quarkus.runtime.annotations.ConfigGroup;
+
+@ConfigGroup
 public interface CertificateKeystoreConfig {
     /**
      * Create enables keystore creation for the Certificate.
