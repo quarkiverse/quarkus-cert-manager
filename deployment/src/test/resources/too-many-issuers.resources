@@ -2,4 +2,6 @@ quarkus.certificate.name=aa
 quarkus.certificate.secret-name=secret
 quarkus.certificate.self-signed.enabled=true
 quarkus.certificate.vault.server=a@b.com
+quarkus.certificate.vault.path=/v
+quarkus.certificate.vault.ca-bundle=1 2 3
 quarkus.certificate.autoconfigure=NONE
