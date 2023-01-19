@@ -15,6 +15,13 @@ It provides configuration properties to configure the chart metadata and values.
 
 The documentation for this extension can be found [here](https://quarkiverse.github.io/quarkiverse-docs/quarkus-certmanager/dev/index.html).
 
+## Compatibility with Quarkus
+
+| Quarkus Cert-Manager Version  | Quarkus Version |
+|---|---|
+| 0.0.2  | Quarkus 2.12+ |
+| 0.0.1  | Quarkus 2.12+ |
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
