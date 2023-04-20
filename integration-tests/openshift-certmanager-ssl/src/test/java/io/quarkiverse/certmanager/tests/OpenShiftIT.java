@@ -30,6 +30,8 @@ public class OpenShiftIT {
                 .unmarshalAsList(new FileInputStream(Paths.get("target", "kubernetes", "openshift.yml").toFile()));
         // Certificate expected data:
         Certificate certificate = find(resources, Certificate.class);
+        assertEquals(NAME, certificate.getMetadata().getName());
+        assertEquals("my-namespace", certificate.getMetadata().getNamespace());
         assertEquals("tls-secret", certificate.getSpec().getSecretName());
         assertEquals(Arrays.asList("kubernetes-example.com", "localhost"), certificate.getSpec().getDnsNames());
         assertTrue(certificate.getSpec().getEncodeUsagesInRequest());

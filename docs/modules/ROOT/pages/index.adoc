@@ -14,6 +14,7 @@ Before getting started, make sure you're using the right Quarkus Helm version th
 [%header,format=csv]
 |===
 Quarkus Cert-Manager Version,Quarkus Version
+0.1.0,Quarkus 3+
 0.0.2,Quarkus 2.12+
 0.0.1,Quarkus 2.12+
 |===
@@ -210,7 +211,7 @@ spec:
           service:
             name: kubernetes-example
             port:
-              number: 8080
+              name: http
   tls:
     - hosts:
         - foo.bar.com

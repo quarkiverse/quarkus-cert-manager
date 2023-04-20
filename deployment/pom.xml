@@ -29,7 +29,10 @@
     <dependency>
       <groupId>io.dekorate</groupId>
       <artifactId>certmanager-annotations</artifactId>
-      <classifier>noapt</classifier>
+      <!-- Workaround for: https://github.com/dekorateio/dekorate/pull/1189 -->
+      <!-- To be revert in Quarkus 3.1, when Quarkus uses Dekorate 3.5.5+ -->
+      <!-- <classifier>noapt</classifier> -->
+      <version>3.5.5</version>
     </dependency>
     <dependency>
       <groupId>io.dekorate</groupId>

@@ -19,6 +19,7 @@ The documentation for this extension can be found [here](https://quarkiverse.git
 
 | Quarkus Cert-Manager Version  | Quarkus Version |
 |---|---|
+| 0.1.0  | Quarkus 3+ |
 | 0.0.2  | Quarkus 2.12+ |
 | 0.0.1  | Quarkus 2.12+ |
 
