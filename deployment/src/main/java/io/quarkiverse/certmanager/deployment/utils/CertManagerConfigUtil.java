@@ -16,14 +16,13 @@ import io.quarkiverse.certmanager.deployment.SubjectConfig;
 
 public final class CertManagerConfigUtil {
     private static final String QUARKUS_PREFIX = "quarkus.certificate.";
-    private static final String DEKORATE_PREFIX = "dekorate.certificate.";
     private static final String MULTIPART_SEPARATOR_PATTERN = Pattern.quote(".");
 
     private CertManagerConfigUtil() {
 
     }
 
-    public static Map<String, Object> transformToDekorateProperties(CertificateConfig certificateConfig) {
+    public static Map<String, Object> transformToDekorateProperties(String name, CertificateConfig certificateConfig) {
         Config config = ConfigProvider.getConfig();
         Map<String, Object> certificateProperties = StreamSupport.stream(config.getPropertyNames().spliterator(), false)
                 .filter(k -> k.startsWith(QUARKUS_PREFIX))
@@ -33,6 +32,8 @@ public final class CertManagerConfigUtil {
         // workaround to deal with properties that are Optional<List<String>>. ConfigProvider.getConfig() retrieves these
         // properties as string "a,b" instead of the type Optional<List<String>>, so we need to manually add it.
         overwriteNonStringProperties(certificateConfig, certificateProperties);
+        // set the name if it does not exist
+        certificateProperties.putIfAbsent("name", name);
         return certificateProperties;
     }
 

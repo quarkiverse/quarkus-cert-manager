@@ -54,12 +54,15 @@ public class CertManagerProcessor {
     private static final Logger LOGGER = Logger.getLogger(CertManagerProcessor.class);
 
     @BuildStep
-    FeatureBuildItem feature(Capabilities capabilities, ApplicationInfoBuildItem applicationInfo, CertificateConfig config,
+    public FeatureBuildItem feature(Capabilities capabilities, ApplicationInfoBuildItem applicationInfo,
+            CertificateConfig config,
             BuildProducer<ConfigurationSupplierBuildItem> configurationSupplier,
             BuildProducer<DecoratorBuildItem> decorators) {
         validate(config);
-        configureDekorateToGenerateCertManagerResources(config, configurationSupplier);
-        configureSecuredEndpoints(capabilities, applicationInfo, config, decorators);
+        String name = getResourceName(capabilities, applicationInfo);
+
+        configureDekorateToGenerateCertManagerResources(name, config, configurationSupplier);
+        configureSecuredEndpoints(name, capabilities, config, decorators);
         return new FeatureBuildItem(FEATURE);
     }
 
@@ -74,36 +77,36 @@ public class CertManagerProcessor {
         }
     }
 
-    private static void configureSecuredEndpoints(Capabilities capabilities, ApplicationInfoBuildItem applicationInfo,
-            CertificateConfig config, BuildProducer<DecoratorBuildItem> decorators) {
+    private static void configureSecuredEndpoints(String name, Capabilities capabilities, CertificateConfig config,
+            BuildProducer<DecoratorBuildItem> decorators) {
         if (config.autoconfigure() == AutoConfigureMode.NONE) {
             return;
         }
 
         if (config.autoconfigure() == AutoConfigureMode.AUTOMATIC) {
             if (isOpenShift(capabilities) && isRouteExposed()) {
-                configureRouteTsl(capabilities, applicationInfo, config, decorators);
+                configureRouteTsl(name, config, decorators);
             } else if (isIngressExposed()) {
-                configureIngressTsl(capabilities, applicationInfo, config, decorators);
+                configureIngressTsl(name, config, decorators);
             } else {
                 configureQuarkusHttpSsl(config, decorators);
             }
         } else if (config.autoconfigure() == AutoConfigureMode.ALL) {
             configureQuarkusHttpSsl(config, decorators);
             if (isOpenShift(capabilities) && isRouteExposed()) {
-                configureRouteTsl(capabilities, applicationInfo, config, decorators);
+                configureRouteTsl(name, config, decorators);
             }
 
             if (isIngressExposed()) {
-                configureIngressTsl(capabilities, applicationInfo, config, decorators);
+                configureIngressTsl(name, config, decorators);
             }
         } else if (config.autoconfigure() == AutoConfigureMode.CLUSTER_ONLY) {
             if (isOpenShift(capabilities) && isRouteExposed()) {
-                configureRouteTsl(capabilities, applicationInfo, config, decorators);
+                configureRouteTsl(name, config, decorators);
             }
 
             if (isIngressExposed()) {
-                configureIngressTsl(capabilities, applicationInfo, config, decorators);
+                configureIngressTsl(name, config, decorators);
             }
         } else if (config.autoconfigure() == AutoConfigureMode.HTTPS_ONLY) {
             configureQuarkusHttpSsl(config, decorators);
@@ -143,39 +146,35 @@ public class CertManagerProcessor {
         }
     }
 
-    private static void configureRouteTsl(Capabilities capabilities, ApplicationInfoBuildItem applicationInfo,
-            CertificateConfig certificateConfig, BuildProducer<DecoratorBuildItem> decorators) {
+    private static void configureRouteTsl(String name, CertificateConfig certificateConfig,
+            BuildProducer<DecoratorBuildItem> decorators) {
         if (certificateConfig.issuerRef().isPresent()) {
             String issuerName = certificateConfig.issuerRef().get().name();
-            if (CLUSTER_ISSUER.equals(certificateConfig.issuerRef().get().kind())) {
-                addAnnotationIntoRoute(CertManagerAnnotations.CLUSTER_ISSUER, issuerName, capabilities, applicationInfo,
-                        decorators);
+            Optional<String> kind = certificateConfig.issuerRef().get().kind();
+            if (kind.isPresent() && CLUSTER_ISSUER.equals(kind.get())) {
+                addAnnotationIntoRoute(name, CertManagerAnnotations.CLUSTER_ISSUER, issuerName, decorators);
             } else {
-                addAnnotationIntoRoute(CertManagerAnnotations.ISSUER, issuerName, capabilities, applicationInfo, decorators);
+                addAnnotationIntoRoute(name, CertManagerAnnotations.ISSUER, issuerName, decorators);
             }
         } else {
-            addAnnotationIntoRoute(CertManagerAnnotations.ISSUER, getResourceName(capabilities, applicationInfo),
-                    capabilities, applicationInfo, decorators);
+            addAnnotationIntoRoute(name, CertManagerAnnotations.ISSUER, name, decorators);
         }
     }
 
-    private static void configureIngressTsl(Capabilities capabilities, ApplicationInfoBuildItem applicationInfo,
-            CertificateConfig certificateConfig,
+    private static void configureIngressTsl(String name, CertificateConfig certificateConfig,
             BuildProducer<DecoratorBuildItem> decorators) {
         String[] tlsHosts = certificateConfig.dnsNames().map(l -> l.toArray(new String[0])).orElse(new String[0]);
         decorators.produce(new DecoratorBuildItem(KUBERNETES,
-                new AddIngressTlsDecorator(getResourceName(capabilities, applicationInfo),
+                new AddIngressTlsDecorator(name,
                         new IngressBuilder()
                                 .withTlsSecretName(certificateConfig.secretName())
                                 .withTlsHosts(tlsHosts)
                                 .build())));
     }
 
-    private static void addAnnotationIntoRoute(String annotation, String value, Capabilities capabilities,
-            ApplicationInfoBuildItem applicationInfo,
+    private static void addAnnotationIntoRoute(String name, String annotation, String value,
             BuildProducer<DecoratorBuildItem> decorators) {
-        decorators.produce(new DecoratorBuildItem(OPENSHIFT_GROUP,
-                new AddAnnotationDecorator(getResourceName(capabilities, applicationInfo), annotation, value, ROUTE)));
+        decorators.produce(new DecoratorBuildItem(OPENSHIFT_GROUP, new AddAnnotationDecorator(name, annotation, value, ROUTE)));
     }
 
     private static void configureQuarkusHttpSslWithKeystore(CertificateConfig config, KeystoreType type,
@@ -196,16 +195,16 @@ public class CertManagerProcessor {
 
     }
 
-    private static void configureDekorateToGenerateCertManagerResources(CertificateConfig config,
+    private static void configureDekorateToGenerateCertManagerResources(String name, CertificateConfig config,
             BuildProducer<ConfigurationSupplierBuildItem> configurationSupplier) {
         configurationSupplier.produce(
                 new ConfigurationSupplierBuildItem(
                         new PropertyConfiguration(
                                 CertificateConfigAdapter.newBuilder(
-                                        CertManagerConfigUtil.transformToDekorateProperties(config)))));
+                                        CertManagerConfigUtil.transformToDekorateProperties(name, config)))));
     }
 
-    public static String getResourceName(Capabilities capabilities, ApplicationInfoBuildItem info) {
+    private static String getResourceName(Capabilities capabilities, ApplicationInfoBuildItem info) {
         Config config = ConfigProvider.getConfig();
         Optional<String> resourceName;
         if (isOpenShift(capabilities)) {
