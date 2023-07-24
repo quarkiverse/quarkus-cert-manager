@@ -25,11 +25,14 @@ import io.quarkiverse.certmanager.deployment.utils.KeystoreType;
 import io.quarkus.deployment.Capabilities;
 import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
+import io.quarkus.deployment.annotations.BuildSteps;
 import io.quarkus.deployment.builditem.ApplicationInfoBuildItem;
 import io.quarkus.deployment.builditem.FeatureBuildItem;
 import io.quarkus.kubernetes.spi.ConfigurationSupplierBuildItem;
 import io.quarkus.kubernetes.spi.DecoratorBuildItem;
+import io.quarkus.kubernetes.spi.KubernetesPortBuildItem;
 
+@BuildSteps(onlyIf = IsEnabled.class)
 public class CertManagerProcessor {
     private static final String FEATURE = "cert-manager";
     private static final String ISSUERS_REQUIREMENT_MESSAGE = "You need to set only one of the following issuers: `issuerRef`, "
@@ -57,12 +60,17 @@ public class CertManagerProcessor {
     public FeatureBuildItem feature(Capabilities capabilities, ApplicationInfoBuildItem applicationInfo,
             CertificateConfig config,
             BuildProducer<ConfigurationSupplierBuildItem> configurationSupplier,
-            BuildProducer<DecoratorBuildItem> decorators) {
+            BuildProducer<DecoratorBuildItem> decorators,
+            BuildProducer<KubernetesPortBuildItem> kubernetesPorts) {
         validate(config);
         String name = getResourceName(capabilities, applicationInfo);
 
         configureDekorateToGenerateCertManagerResources(name, config, configurationSupplier);
         configureSecuredEndpoints(name, capabilities, config, decorators);
+        int sslPort = ConfigProvider.getConfig()
+                .getOptionalValue("quarkus.http.ssl-port", Integer.class)
+                .orElse(8443);
+        kubernetesPorts.produce(new KubernetesPortBuildItem(sslPort, "https"));
         return new FeatureBuildItem(FEATURE);
     }
 

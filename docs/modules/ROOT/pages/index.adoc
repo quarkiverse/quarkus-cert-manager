@@ -62,7 +62,7 @@ Once we add the Quarkus Cert-Manager extension to your project, you can now gene
 
 And next, we need to provide the certificate configuration. The minimal information that the extension needs is:
 * `secretName`: the name of the Kubernetes https://kubernetes.io/docs/concepts/configuration/secret/[Secret] resource that will include the Cert-Manager generated files.
-* the Issuer that represents the certificate authority (CA). See all the supported options in <<issuers,the Issuer>> section.
+* the Issuer that represents the certificate authority (CA). See all the supported options in <<Issuers,the Issuer>> section.
 
 For all the configuration options, please go to <<configuration-reference,the Configuration guide>>.
 

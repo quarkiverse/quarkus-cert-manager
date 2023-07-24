@@ -11,6 +11,13 @@ import io.smallrye.config.WithDefault;
 @ConfigMapping(prefix = "quarkus.certificate")
 @ConfigRoot(phase = ConfigPhase.BUILD_TIME)
 public interface CertificateConfig {
+
+    /**
+     * If enable/disable the Cert-Manager extension.
+     */
+    @WithDefault("true")
+    boolean enabled();
+
     /**
      * The name of the certificate resource to be generated.
      * If not provided, it will use the default name for the application resources.
