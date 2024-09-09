@@ -66,18 +66,6 @@
         <module>integration-tests</module>
       </modules>
     </profile>
-    <profile>
-      <id>it</id>
-      <activation>
-        <property>
-          <name>performRelease</name>
-          <value>!true</value>
-        </property>
-      </activation>
-      <modules>
-        <module>integration-tests</module>
-      </modules>
-    </profile>
   </profiles>
   <build>
     <pluginManagement>
