@@ -2,9 +2,6 @@ package io.quarkiverse.certmanager.deployment;
 
 import java.util.Optional;
 
-import io.quarkus.runtime.annotations.ConfigGroup;
-
-@ConfigGroup
 public interface CertificateKeystoresConfig {
     /**
      * JKS configures options for storing a JKS keystore in the spec.secretName Secret resource.

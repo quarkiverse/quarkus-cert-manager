@@ -1,8 +1,5 @@
 package io.quarkiverse.certmanager.deployment;
 
-import io.quarkus.runtime.annotations.ConfigGroup;
-
-@ConfigGroup
 public interface LocalObjectReferenceConfig {
     /**
      * The name of the resource being referred to.
