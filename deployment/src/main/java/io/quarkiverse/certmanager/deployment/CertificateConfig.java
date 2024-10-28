@@ -110,25 +110,25 @@ public interface CertificateConfig {
     Optional<List<String>> usages();
 
     /**
-     * @return options to control private keys used for the Certificate.
+     * Options to control private keys used for the Certificate.
      */
     Optional<CertificatePrivateKeyConfig> privateKey();
 
     /**
-     * @return whether key usages should be present in the CertificateRequest
+     * Whether key usages should be present in the CertificateRequest
      */
     @WithDefault("false")
     boolean encodeUsagesInRequest();
 
     /**
-     * @return the mount path where the generated certificate resources will be mounted.
+     * The mount path where the generated certificate resources will be mounted.
      */
     @WithDefault("/etc/certs")
     String volumeMountPath();
 
     /**
-     * @return whether to populate the HTTP SSL configuration as described in
-     *         <a href="https://quarkus.io/guides/http-reference#providing-a-keystore">here</a>.
+     * Whether to populate the HTTP SSL configuration as described in
+     * <a href="https://quarkus.io/guides/http-reference#providing-a-keystore">here</a>.
      */
     @WithDefault("AUTOMATIC")
     AutoConfigureMode autoconfigure();

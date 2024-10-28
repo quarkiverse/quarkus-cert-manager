@@ -3,9 +3,6 @@ package io.quarkiverse.certmanager.deployment;
 import java.util.List;
 import java.util.Optional;
 
-import io.quarkus.runtime.annotations.ConfigGroup;
-
-@ConfigGroup
 public interface CAConfig {
     /**
      * The name of the secret used to sign Certificates issued by this Issuer.
