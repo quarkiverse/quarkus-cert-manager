@@ -30,7 +30,7 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <quarkus.version>3.18.1</quarkus.version>
     <fabric8.certmanager-model-v1.version>6.13.5</fabric8.certmanager-model-v1.version>
-    <fabric8.kubernetes-httpclient-okhttp.version>7.0.1</fabric8.kubernetes-httpclient-okhttp.version>
+    <fabric8.kubernetes-httpclient-okhttp.version>7.1.0</fabric8.kubernetes-httpclient-okhttp.version>
   </properties>
   <dependencyManagement>
     <dependencies>
