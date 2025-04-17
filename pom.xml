@@ -28,7 +28,7 @@
     <maven.compiler.target>11</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <quarkus.version>3.21.2</quarkus.version>
+    <quarkus.version>3.21.3</quarkus.version>
     <fabric8.certmanager-model-v1.version>6.13.5</fabric8.certmanager-model-v1.version>
     <fabric8.kubernetes-httpclient-okhttp.version>7.1.0</fabric8.kubernetes-httpclient-okhttp.version>
   </properties>
