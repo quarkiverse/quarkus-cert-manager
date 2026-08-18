@@ -7,7 +7,7 @@
 
 ## Introduction
 
-This Quarkus extension eases the generation of certifications using [Cert-Manager](https://cert-manager.io/) and SSL configuration in Quarkus.
+This Quarkus extension eases the generation of certificates using [Cert-Manager](https://cert-manager.io/) and SSL configuration in Quarkus.
 
 It provides configuration properties to configure the chart metadata and values.
 
@@ -23,6 +23,11 @@ The documentation for this extension can be found [here](https://quarkiverse.git
 | 1.0.0  | Quarkus 3+ |
 | 0.0.2  | Quarkus 2.12+ |
 | 0.0.1  | Quarkus 2.12+ |
+
+## Testing
+
+The integration tests run on a [KinD](https://kind.sigs.k8s.io/) Kubernetes cluster with [Cert-Manager](https://cert-manager.io/) installed.
+The project uses the Cert-Manager [Long Term Support (LTS)](https://cert-manager.io/docs/releases/#long-term-support-releases) release, currently **v1.17.4**.
 
 ## Contributors ✨
 

@@ -23,6 +23,10 @@ on:
       - '*.txt'
       - '.all-contributorsrc'
 
+env:
+  KIND_VERSION: v0.32.0
+  CERT_MANAGER_VERSION: v1.17.4
+
 jobs:
   build:
 
@@ -53,11 +57,11 @@ jobs:
       - name: Kubernetes KinD Cluster
         uses: container-tools/kind-action@v2
         with:
-          version: v0.17.0
+          version: ${{ env.KIND_VERSION }}
           registry: true
       - name: Install Cert-Manager
         run: |
-          kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.12.2/cert-manager.yaml
+          kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/${{ env.CERT_MANAGER_VERSION }}/cert-manager.yaml
       - name: Verify Test
         run: |
           K8S_NAMESPACE=test
