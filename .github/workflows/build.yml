@@ -75,7 +75,8 @@ jobs:
             -Dquarkus.container-image.registry=$KIND_REGISTRY \
             -Dquarkus.container-image.group=$KIND_REGISTRY_GROUP \
             -Dquarkus.container-image.tag=$VERSION \
-            -Dquarkus.container-image.insecure=true
+            -Dquarkus.container-image.insecure=true \
+            -Dquarkus.podman.tls-verify=false
           kubectl apply -f target/kubernetes/kubernetes.yml
           # TODO: Investigate why this is failing in CI (it works fine locally)
           kubectl wait --timeout=240s --for=condition=ready pod -l app.kubernetes.io/name=quarkus-hello-world
