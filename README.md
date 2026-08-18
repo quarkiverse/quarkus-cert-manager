@@ -20,12 +20,13 @@ The documentation for this extension can be found [here](https://quarkiverse.git
 
 ## Compatibility with Quarkus
 
-| Quarkus Cert-Manager Version  | Quarkus Version |
-|---|---|
-| 1.0.1  | Quarkus 3+ |
-| 1.0.0  | Quarkus 3+ |
-| 0.0.2  | Quarkus 2.12+ |
-| 0.0.1  | Quarkus 2.12+ |
+| Quarkus Cert-Manager Version | Quarkus Version |
+|------------------------------|---|
+| 1.0.x                        | Quarkus 3+ |
+| 0.0.2                        | Quarkus 2.12+ |
+| 0.0.1                        | Quarkus 2.12+ |
+
+Project is currently aligned with Quarkus LTS: **3.33.3** !
 
 ## Testing
 
