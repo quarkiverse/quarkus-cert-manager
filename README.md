@@ -7,9 +7,12 @@
 
 ## Introduction
 
-This Quarkus extension eases the generation of certificates using [Cert-Manager](https://cert-manager.io/) and SSL configuration in Quarkus.
+This Quarkus extension simplifies the generation of the Kubernetes manifests for configuring [Cert-Manager](https://cert-manager.io/) issuers, including:
+- [SelfSigned](https://cert-manager.io/docs/configuration/selfsigned/) (PKI),
+- [Vault](https://cert-manager.io/docs/configuration/vault/),
+- [CA](https://cert-manager.io/docs/configuration/ca/)
 
-It provides configuration properties to configure the chart metadata and values.
+It works with the CNCF [Cert-Manager](https://cert-manager.io/) project running on a Kubernetes cluster.
 
 ## Documentation
 
