@@ -30,7 +30,10 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <quarkus.version>3.33.3.1</quarkus.version>
     <fabric8.certmanager-model-v1.version>6.14.0</fabric8.certmanager-model-v1.version>
-    <fabric8.kubernetes-httpclient-okhttp.version>7.8.0</fabric8.kubernetes-httpclient-okhttp.version>
+    <!-- The Quarkus BOM manages fabric8 at 7.5.2, but kubernetes-httpclient-okhttp is pinned to 7.8.0.
+    The OkHttpClientBuilderImpl from 7.8.0 expects a tlsServerName field on
+    HttpClient.Builder that was only added in the kubernetes-client-api after 7.5.2 -->
+    <fabric8.kubernetes-httpclient-okhttp.version>7.5.2</fabric8.kubernetes-httpclient-okhttp.version>
   </properties>
   <dependencyManagement>
     <dependencies>
