@@ -78,7 +78,7 @@ jobs:
             -Dquarkus.container-image.insecure=true
           kubectl apply -f target/kubernetes/kubernetes.yml
           # TODO: Investigate why this is failing in CI (it works fine locally)
-          # kubectl wait --timeout=120s --for=condition=ready pod -l app.kubernetes.io/name=quarkus-hello-world
+          kubectl wait --timeout=240s --for=condition=ready pod -l app.kubernetes.io/name=quarkus-hello-world
           # mvn clean install -Drun-endpoint-test-in-kubernetes=true
 
       - name: (Only if it failed) Log at failures
