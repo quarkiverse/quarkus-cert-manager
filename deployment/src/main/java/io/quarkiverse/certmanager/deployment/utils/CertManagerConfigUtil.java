@@ -46,6 +46,8 @@ public final class CertManagerConfigUtil {
         if (config.ca().isPresent()) {
             Map<String, Object> caProps = (Map<String, Object>) props.get("ca");
             config.ca().get().crlDistributionPoints().ifPresent(l -> put(caProps, "crl-distribution-points", l));
+            // this property is only used by the extension, so it should not be passed to Dekorate
+            caProps.remove("trust");
         }
         if (config.selfSigned().isPresent()) {
             Map<String, Object> ssProps = (Map<String, Object>) props.get("self-signed");

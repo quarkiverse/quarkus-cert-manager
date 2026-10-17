@@ -44,6 +44,8 @@ public class CertManagerProcessor {
     private static final String QUARKUS_HTTP_SSL_KEYSTORE_FILE = "QUARKUS_HTTP_SSL_CERTIFICATE_KEY_STORE_FILE";
     private static final String QUARKUS_HTTP_SSL_KEYSTORE_TYPE = "QUARKUS_HTTP_SSL_CERTIFICATE_KEY_STORE_FILE_TYPE";
     private static final String QUARKUS_HTTP_SSL_KEYSTORE_PASSWORD = "QUARKUS_HTTP_SSL_CERTIFICATE_KEY_STORE_PASSWORD";
+    private static final String QUARKUS_TLS_TRUST_STORE_PEM_CERTS = "QUARKUS_TLS_TRUST_STORE_PEM_CERTS";
+    private static final String CA_CERTIFICATE_FILE = "ca.crt";
     private static final String QUARKUS_KUBERNETES_INGRESS_EXPOSE = "quarkus.kubernetes.ingress.expose";
     private static final String QUARKUS_KUBERNETES_EXPOSE = "quarkus.kubernetes.expose";
     private static final String QUARKUS_KUBERNETES_NAME = "quarkus.kubernetes.name";
@@ -67,6 +69,7 @@ public class CertManagerProcessor {
 
         configureDekorateToGenerateCertManagerResources(name, config, configurationSupplier);
         configureSecuredEndpoints(name, capabilities, config, decorators);
+        configureCATrustStore(config, decorators);
         int sslPort = ConfigProvider.getConfig()
                 .getOptionalValue("quarkus.http.ssl-port", Integer.class)
                 .orElse(8443);
@@ -118,6 +121,15 @@ public class CertManagerProcessor {
             }
         } else if (config.autoconfigure() == AutoConfigureMode.HTTPS_ONLY) {
             configureQuarkusHttpSsl(config, decorators);
+        }
+    }
+
+    private static void configureCATrustStore(CertificateConfig config, BuildProducer<DecoratorBuildItem> decorators) {
+        if (config.ca().isPresent() && config.ca().get().trust().orElse(false)) {
+            decorators.produce(new DecoratorBuildItem(new AddEnvVarDecorator(new EnvBuilder()
+                    .withName(QUARKUS_TLS_TRUST_STORE_PEM_CERTS)
+                    .withValue(config.volumeMountPath() + "/" + CA_CERTIFICATE_FILE)
+                    .build())));
         }
     }
 
