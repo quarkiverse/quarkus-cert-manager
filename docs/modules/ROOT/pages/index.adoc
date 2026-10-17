@@ -262,6 +262,22 @@ data:
   tls.key: <auto generated encrypted data>
 ----
 
+==== Trusting the CA issuer
+
+When the CA issuer is backed by a self-signed certificate (which is common in testing clusters without public internet access), the applications calling services secured by this CA will not trust the issued certificates.
+Cert-Manager populates the CA certificate in the `ca.crt` entry of the generated certificate secret, which is mounted into the container at `quarkus.certificate.volume-mount-path` (`/etc/certs` by default).
+
+To configure the default TLS trust store of the application to trust this CA certificate, add the following property:
+
+[source,properties]
+----
+quarkus.certificate.ca.trust=true
+----
+
+The extension will then add the environment variable `QUARKUS_TLS_TRUST_STORE_PEM_CERTS=/etc/certs/ca.crt` to the Deployment, so the clients using the default TLS configuration (for example, the REST client) will trust the certificates signed by the CA issuer.
+
+NOTE: When enabled, the default TLS trust store will only trust the CA issuer certificate.
+
 === Vault
 
 Using the https://cert-manager.io/docs/configuration/vault/[Vault issuer], the certificate will be issued by the certificate authority https://www.vaultproject.io/[Vault].
