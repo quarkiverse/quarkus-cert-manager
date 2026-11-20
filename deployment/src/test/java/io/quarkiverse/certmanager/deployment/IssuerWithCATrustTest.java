@@ -8,11 +8,11 @@ import org.junit.jupiter.api.extension.RegisterExtension;
 
 import io.quarkus.deployment.builditem.FeatureBuildItem;
 import io.quarkus.kubernetes.spi.DecoratorBuildItem;
-import io.quarkus.test.QuarkusUnitTest;
+import io.quarkus.test.QuarkusExtensionTest;
 
 public class IssuerWithCATrustTest {
     @RegisterExtension
-    static final QuarkusUnitTest config = new QuarkusUnitTest()
+    static final QuarkusExtensionTest config = new QuarkusExtensionTest()
             .withEmptyApplication()
             .withConfigurationResource("test-with-ca-trust.resources")
             .addBuildChainCustomizer(builder -> builder.addBuildStep(context -> {
