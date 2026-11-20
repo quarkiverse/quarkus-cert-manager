@@ -21,4 +21,4 @@ jobs:
     secrets: inherit
     with:
       ecosystem_ci_repo_path: quarkiverse-certmanager
-      java_version: 17
+      java_version: 21
