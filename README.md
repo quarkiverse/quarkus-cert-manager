@@ -22,11 +22,12 @@ The documentation for this extension can be found [here](https://quarkiverse.git
 
 | Quarkus Cert-Manager Version | Quarkus Version |
 |------------------------------|---|
-| 1.0.x                        | Quarkus 3+ |
+| 2.0.x                        | Quarkus 4+ |
+| 1.x                          | Quarkus 3+ |
 | 0.0.2                        | Quarkus 2.12+ |
 | 0.0.1                        | Quarkus 2.12+ |
 
-Project is currently aligned with Quarkus LTS: **3.33.3** !
+Project is currently aligned with Quarkus: **4.0.0** !
 
 ## Testing
 
